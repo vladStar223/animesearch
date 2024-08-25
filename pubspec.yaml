@@ -28,6 +28,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
+
+  bloc:
+  bloc_concurrency:
+  equatable:
+  flutter_bloc:
+  http:
+  stream_transform:
   flutter:
     sdk: flutter
 
