@@ -13,10 +13,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<SearchStarted>(_start);
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
-    final x = ApiClient();
-    final v = x.fetchPost();
+    _startSearching();
+}// запуск поиска
+  _startSearching(){
+    var x = ApiClient();
+    x.fetchUsers('vvv');
+  }// осуществление поиска
 
-
-}
 
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'block/search_bloc.dart';
+import 'block/search/search_bloc.dart';
 
 void main() {
   runApp(const MyApp());
