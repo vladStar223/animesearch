@@ -11,8 +11,7 @@ class ApiClient {
       final response = await http
           .get(Uri.parse('https://api.jikan.moe/v4/users').replace(
         queryParameters: {
-          'q':'xdd',
-          'gender':'male',
+          'q':'vvv',
 
         },
       ));
@@ -22,11 +21,6 @@ class ApiClient {
         // then parse the JSON.
         var x = Users.fromJson(jsonDecode(response.body));
         print(x.data.length);
-        int i = 0;
-        while (i< x.data.length){
-          print(x.data[i].username);
-          i = i+1;
-        }
       } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
