@@ -1,6 +1,9 @@
 import 'package:animesearch/src/block/search/search_bloc.dart';
 import 'package:animesearch/src/responsive/responsive.dart';
 import 'package:animesearch/theme/test_theme.dart';
+import 'package:animesearch/ui/screens/background.dart';
+import 'package:animesearch/ui/widgets/search.dart';
+import 'package:animesearch/ui/widgets/user_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme:  themeData(),
 
-    home: TestPage(),
+    home: MyHomePage(),
     );
   }
 }
@@ -30,50 +33,20 @@ class MyHomePage extends StatelessWidget {
     // TODO: implement build
     return BlocProvider(
       create: (context) => SearchBloc(),
-      child: Scaffold(
-        body: BlocBuilder<SearchBloc, SearchState>(
-          builder: (context, state) {
-            return Center(child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('323'),
-                TextButton(onPressed: () {
-                  BlocProvider.of<SearchBloc>(context).add(SearchStarted());
-                }, child: Text('Click')),
-              ],
-            ));
-          },
-        ),
-      ),
-    );
-    throw UnimplementedError();
-  }
+      child:  Scaffold(
+        body:SafeArea(
+          child: Stack(
+            children: [
+               const Background(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Search(),
+              ),
 
-}
-class TestPage extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      body:Center(child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 100.sH(context),
-            width: 10.sW(context),
-            color: Colors.black,
+            ],
           ),
-          TextButton(onPressed: (){}, child: Text('1')),
-          TextButton(onPressed: (){}, child: Text('2')),
-          TextButton(onPressed: (){}, child: Text('3')),
-          TextButton(onPressed: (){}, child: Text('4')),
-          TextButton(
-              onPressed: (){},
-              child: Text('5')),
-          TextButton(onPressed: (){}, child: Text('6')),
-          TextButton(onPressed: (){}, child: Text('7')),
-        ],
-      ),),
+        )
+      ),
     );
     throw UnimplementedError();
   }
