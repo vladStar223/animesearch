@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import 'package:animesearch/domain/api_clients/api.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+
+import '../../domain/api_clients/api.dart';
 part 'search_event.dart';
 part 'search_state.dart';
 
