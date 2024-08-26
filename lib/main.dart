@@ -38,9 +38,14 @@ class MyHomePage extends StatelessWidget {
           child: Stack(
             children: [
                const Background(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Search(),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Search(),
+                  ),
+                  UserCard(),
+                ],
               ),
 
             ],
