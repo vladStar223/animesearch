@@ -1,6 +1,4 @@
 
-import 'package:animesearch/main.dart';
-import 'package:animesearch/src/responsive/responsive.dart';
 import 'package:animesearch/theme/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +24,12 @@ ThemeData themeData(){
           const TextStyle(color: Colors.teal, fontWeight: FontWeight.bold)
       ),
       hintStyle: WidgetStateProperty.all(const TextStyle(color: Colors.grey)),
+    ),
+    dividerTheme: const DividerThemeData(
+      color: Colors.blue
+    ),
+    cardTheme: const CardTheme(
+      color: AppColors.white
     ),
   );
 }

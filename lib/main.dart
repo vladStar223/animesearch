@@ -1,7 +1,8 @@
 import 'package:animesearch/src/block/search/search_bloc.dart';
 import 'package:animesearch/src/responsive/responsive.dart';
-import 'package:animesearch/theme/test_theme.dart';
+import 'package:animesearch/theme/theme_app.dart';
 import 'package:animesearch/ui/screens/background.dart';
+import 'package:animesearch/ui/screens/search_panel.dart';
 import 'package:animesearch/ui/widgets/search.dart';
 import 'package:animesearch/ui/widgets/user_card.dart';
 import 'package:flutter/material.dart';
@@ -37,17 +38,8 @@ class MyHomePage extends StatelessWidget {
         body:SafeArea(
           child: Stack(
             children: [
-               const Background(),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Search(),
-                  ),
-                  UserCard(),
-                ],
-              ),
-
+               Background(),
+              SearchPanel(),
             ],
           ),
         )
