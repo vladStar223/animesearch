@@ -1,5 +1,6 @@
 
 
+import 'package:animesearch/ui/widgets/choose_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,9 @@ class ChoosePanel extends StatelessWidget{
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            TextButton(onPressed: (){}, child: const Text('User')),
-            TextButton(onPressed: (){}, child: const Text('Anime')),
-            TextButton(onPressed: (){}, child: const Text('Manga')),
+            ChooseButton(),
+            ChooseButton(),
+            ChooseButton(),
           ],
         ),
         Divider(
