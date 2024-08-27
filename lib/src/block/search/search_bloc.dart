@@ -19,6 +19,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   _startSearching(){
     var x = ApiClient();
     x.fetchUsers('vvv');
+    emit(SearchChooseState(status: SearchChooseStatus.anime));
   }// осуществление поиска
 
 
