@@ -25,5 +25,11 @@ ThemeData themeData(){
       ),
       hintStyle: WidgetStateProperty.all(const TextStyle(color: Colors.grey)),
     ),
+    dividerTheme: const DividerThemeData(
+      color: Colors.blue
+    ),
+    cardTheme: const CardTheme(
+      color: AppColors.white
+    ),
   );
 }
