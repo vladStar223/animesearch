@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-import '../entity/Users/users.dart';
+import '../entity/User/users.dart';
 class ApiClient {
   Future<dynamic> fetchUsers(String name) async {
     try {
