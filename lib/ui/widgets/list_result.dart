@@ -6,18 +6,17 @@
 import 'package:flutter/material.dart';
 
 class ListResult extends StatelessWidget{
-  const ListResult({super.key});
-
+  ListResult({super.key, required this.child});
+  final Widget child;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return ListView(
-      children: const [
-        Text('2323'),
-        Text('2323'),
-        Text('2323'),
-        Text('2323'),
-      ],
+     return ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: 24,
+        itemBuilder: (BuildContext context, int index) {
+          return child;
+        }
     );
     throw UnimplementedError();
   }
