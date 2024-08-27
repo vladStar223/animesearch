@@ -3,6 +3,7 @@
 
 
 
+import 'package:animesearch/theme/constants.dart';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget{
@@ -11,14 +12,18 @@ class UserCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return const Card(
+     String url = "https://cdn.myanimelist.net/images/kaomoji_mal_white.png";
+    return Card(
+      color: AppColors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.album, size: 50),
-            title: Text('Heart Shaker'),
-            subtitle: Text('TWICE'),
+            leading: CircleAvatar(
+                child: Image.network(url,),
+            ),
+            title: Text('User'),
+            //subtitle: const Text('TWIC'),
           ),
         ],
       ),

@@ -1,6 +1,4 @@
 
-import 'package:animesearch/main.dart';
-import 'package:animesearch/src/responsive/responsive.dart';
 import 'package:animesearch/theme/constants.dart';
 import 'package:flutter/material.dart';
 
