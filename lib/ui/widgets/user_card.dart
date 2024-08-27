@@ -2,9 +2,11 @@
 
 
 
+import 'package:animesearch/src/block/swich/swich_bloc.dart';
 import 'package:animesearch/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 class UserCard extends StatelessWidget{
   const UserCard({super.key});
@@ -30,7 +32,7 @@ class UserCard extends StatelessWidget{
               trailing: TextButton(onPressed: () async {
                 final Uri _url = Uri.parse(url);
                 await launchUrl(_url,mode: LaunchMode.externalApplication);
-
+                //BlocProvider.of<SwichBloc>(context).state.status= SwichStatus.anime;
               }, child: Text('add')),
             ),
               //subtitle: const Text('last_online'),

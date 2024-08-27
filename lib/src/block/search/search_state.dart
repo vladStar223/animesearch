@@ -18,8 +18,3 @@ final class SearchStartedFailure extends SearchState {
 }
 //state searching
 
-enum  SearchChooseStatus { initial, user, anime, manga }
-final class SearchChooseState extends SearchState {
-  SearchChooseState({this.status = SearchChooseStatus.initial});
-  final SearchChooseStatus status;
-}
