@@ -16,11 +16,13 @@ class ApiClient {
         },
       ));
       if (response.statusCode == 200) {
+
         return Users.fromJson(jsonDecode(response.body));
       } else {
         throw Exception('Failed to load');
       }
     } catch (e) {
+      print('888');
       throw Exception(e.toString());
     }
   }//запрос для поиска пользователй

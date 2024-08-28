@@ -11,7 +11,15 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Expanded(child: ListResult());
+
+    return BlocBuilder<SearchBloc, SearchState>(
+      builder: (context, state) {
+        if(state is SearchStartedSuccess){
+          return Expanded(child: ListResult(state.users));
+        }
+        return Expanded(child: CircularProgressIndicator());
+      },
+    );
     throw UnimplementedError();
   }
 

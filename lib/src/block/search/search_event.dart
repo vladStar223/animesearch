@@ -13,24 +13,24 @@ final class SearchStarted extends SearchEvent{
 final class SearchUserButtonGet extends SearchEvent{
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 
 }//when pressed user button
 final class SearchMangaButtonGet extends SearchEvent{
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 
 }//when pressed manga button
 final class SearchAnimeButtonGet extends SearchEvent{
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 
 }//when pressed anime button
 final class SearchUniversalStarted extends SearchEvent{
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 
 }//when type  of search not specified

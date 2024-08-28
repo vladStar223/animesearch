@@ -13,7 +13,7 @@ final class SearchInitial extends SearchState {
 final class SearchStartedInProgress extends SearchState {
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 
 }
 final class SearchStartedSuccess extends SearchState {
