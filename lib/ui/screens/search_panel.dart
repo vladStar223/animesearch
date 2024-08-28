@@ -16,15 +16,14 @@ class SearchPanel extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Column(
+    return  const Column(
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.all(8.0),
           child: Search(),
         ),
-        const ChoosePanel(),
-        const UserCard(),
-        Expanded(child: ListResult( child: UserCard())),
+        ChoosePanel(),
+        UserCard(),
       ],
     );
     throw UnimplementedError();

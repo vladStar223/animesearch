@@ -31,21 +31,15 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return BlocProvider(
-      create: (context) => SearchBloc(),
-      child: BlocProvider(
-        create: (context) => SwichBloc(),
-        child: Scaffold(
-            body: SafeArea(
-              child: Stack(
-                children: [
-                  Background(),
-                  SearchPanel(),
-                ],
-              ),
-            )
-        ),
-      ),
+    return const Scaffold(
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Background(),
+              SearchPanel(),
+            ],
+          ),
+        )
     );
     throw UnimplementedError();
   }
