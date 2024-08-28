@@ -33,3 +33,21 @@ ThemeData themeData(){
     ),
   );
 }
+/*
+ style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.resolveWith((states) {
+            // If the button is pressed, return green, otherwise blue
+            if (states.contains(WidgetState.pressed)) {
+              return Colors.green;
+            }
+            return Colors.blue;
+          }),
+          textStyle: WidgetStateProperty.resolveWith((states) {
+            // If the button is pressed, return size 40, otherwise 20
+            if (states.contains(WidgetState.pressed)) {
+              return TextStyle(fontSize: 40);
+            }
+            return TextStyle(fontSize: 20);
+          }),
+        ),
+ */

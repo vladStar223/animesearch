@@ -3,19 +3,23 @@
 
 
 
+import 'package:animesearch/src/domain/entity/User/users.dart';
+import 'package:animesearch/ui/widgets/user_card.dart';
 import 'package:flutter/material.dart';
 
 class ListResult extends StatelessWidget{
-  ListResult({super.key, required this.child});
-  final Widget child;
+  ListResult(this.users,{super.key});
+  Users users;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
      return ListView.builder(
         padding: const EdgeInsets.all(8),
-        itemCount: 24,
+        itemCount: users.data.length,
         itemBuilder: (BuildContext context, int index) {
-          return child;
+          return UserCard(users.data[index].username,
+              users.data[index].images.jpg.image_url,
+              users.data[index].url);
         }
     );
     throw UnimplementedError();
