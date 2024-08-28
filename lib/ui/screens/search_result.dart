@@ -17,7 +17,7 @@ class SearchResult extends StatelessWidget {
         if(state is SearchStartedSuccess){
           return Expanded(child: ListResult(state.users));
         }
-        return Expanded(child: CircularProgressIndicator());
+        return Expanded(child: Text('Testing'));
       },
     );
     throw UnimplementedError();

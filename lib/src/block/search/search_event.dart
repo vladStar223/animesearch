@@ -4,16 +4,19 @@ part of 'search_bloc.dart';
 sealed class SearchEvent extends Equatable {}
 final class SearchStarted extends SearchEvent{
    final SwichStatus status;
-  SearchStarted(this.status);
+   String text;
+  SearchStarted(this.status,this.text);
 
   @override
   // TODO: implement props
   List<Object?> get props => [];
 }//when start search
 final class SearchUserButtonGet extends SearchEvent{
+  String text;
+  SearchUserButtonGet(this.text);
   @override
   // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [text];
 
 }//when pressed user button
 final class SearchMangaButtonGet extends SearchEvent{

@@ -17,12 +17,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<SearchUserButtonGet>(_getUsers);
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
-    emit(SearchStartedInProgress());
+
     switch(event.status){
       case SwichStatus.initial:
         print('goo1');
       case SwichStatus.user:
-        add(SearchUserButtonGet());
+        emit(SearchStartedInProgress());
+        add(SearchUserButtonGet(event.text));
         print('user_search');
         // TODO: Handle this case.
       case SwichStatus.anime:
@@ -36,7 +37,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   _getUsers(SearchUserButtonGet event,Emitter<SearchState> emit ) async {
     try{
       var api  = ApiClient();
-      Users users =  await api.fetchUsers('vvv');
+      Users users =  await api.fetchUsers(event.text);
       emit(SearchStartedSuccess(users));
     }catch(e){
       emit(SearchStartedFailure(e));

@@ -37,21 +37,13 @@ class _SearchState extends State<Search> {
           hintText: status,
           controller: _textEditingController,
           onChanged: (String value) {
-            print('0y8-yg7807878');
+            BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status,value));
           },
           onTap: () {
             //_textEditingController.clear();
             // The code below only works with SearchAnchor
             // _searchController.openView();
           },
-          trailing: [
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {
-                BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status));
-              },
-            ),
-          ],
         );
       },
     );
