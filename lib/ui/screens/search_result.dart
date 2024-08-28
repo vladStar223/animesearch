@@ -11,7 +11,7 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Expanded(child: ListResult(child: UserCard()));
+    return Expanded(child: ListResult());
     throw UnimplementedError();
   }
 

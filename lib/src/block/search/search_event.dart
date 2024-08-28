@@ -8,21 +8,21 @@ final class SearchStarted extends SearchEvent{
 
   @override
   // TODO: implement props
-  List<Object?> get props => [status];
+  List<Object?> get props => [];
 }//when start search
-final class SearchUserButtonPressed extends SearchEvent{
+final class SearchUserButtonGet extends SearchEvent{
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 
 }//when pressed user button
-final class SearchMangaButtonPressed extends SearchEvent{
+final class SearchMangaButtonGet extends SearchEvent{
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 
 }//when pressed manga button
-final class SearchAnimeButtonPressed extends SearchEvent{
+final class SearchAnimeButtonGet extends SearchEvent{
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();

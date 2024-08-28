@@ -3,19 +3,19 @@
 
 
 
+import 'package:animesearch/ui/widgets/user_card.dart';
 import 'package:flutter/material.dart';
 
 class ListResult extends StatelessWidget{
-  ListResult({super.key, required this.child});
-  final Widget child;
+  const ListResult({super.key});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
      return ListView.builder(
         padding: const EdgeInsets.all(8),
-        itemCount: 24,
+        itemCount: 7,
         itemBuilder: (BuildContext context, int index) {
-          return child;
+          return Text('Test');
         }
     );
     throw UnimplementedError();

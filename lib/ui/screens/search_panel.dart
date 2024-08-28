@@ -21,7 +21,6 @@ class SearchPanel extends StatelessWidget {
           child: Search(),
         ),
         ChoosePanel(),
-        UserCard(),
       ],
     );
     throw UnimplementedError();

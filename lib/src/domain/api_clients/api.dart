@@ -15,22 +15,13 @@ class ApiClient {
           //new type maybe will be
         },
       ));
-      if (kDebugMode) {
-        print(response.statusCode);
-      }
       if (response.statusCode == 200) {
-        // If the server did return a 200 OK response,
-        // then parse the JSON.
-        var x = Users.fromJson(jsonDecode(response.body));
-        print(x.data.length);
+        return Users.fromJson(jsonDecode(response.body));
       } else {
-        // If the server did not return a 200 OK response,
-        // then throw an exception.
-        return "Данные не получены";
-        throw Exception('Failed to load album');
+        throw Exception('Failed to load');
       }
     } catch (e) {
-      return "Данные не получены";
+      throw Exception(e.toString());
     }
   }//запрос для поиска пользователй
   Future<dynamic> fetchAnime() async {

@@ -1,11 +1,13 @@
+import 'dart:async';
 
-
-
-
+import 'package:animesearch/src/block/search/search_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Search extends StatefulWidget{
-  const Search({super.key});
+import '../../src/block/swich/swich_bloc.dart';
+
+class Search extends StatefulWidget {
+  Search({super.key});
 
   @override
   State<Search> createState() => _SearchState();
@@ -16,18 +18,41 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     // TODO: implement build
     final TextEditingController _textEditingController = TextEditingController();
-    return SearchBar(
-      leading: const Icon(Icons.search),
-      autoFocus: true,
-      hintText: 'Search User',
-      controller: _textEditingController,
-      onChanged: (String value) {
-        print('0y8-yg7807878');
-      },
-      onTap: () {
-        //_textEditingController.clear();
-        // The code below only works with SearchAnchor
-        // _searchController.openView();
+    String status;
+    return BlocBuilder<SwichBloc, SwichState>(
+      builder: (context, state) {
+        switch(state.status){
+          case SwichStatus.initial:
+            status = 'Search something';
+          case SwichStatus.user:
+            status = 'Search users';
+          case SwichStatus.anime:
+            status = 'Search anime';
+          case SwichStatus.manga:
+            status = 'Search manga';
+        }
+        return SearchBar(
+          leading: const Icon(Icons.search),
+          autoFocus: true,
+          hintText: status,
+          controller: _textEditingController,
+          onChanged: (String value) {
+            print('0y8-yg7807878');
+          },
+          onTap: () {
+            //_textEditingController.clear();
+            // The code below only works with SearchAnchor
+            // _searchController.openView();
+          },
+          trailing: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status));
+              },
+            ),
+          ],
+        );
       },
     );
     throw UnimplementedError();

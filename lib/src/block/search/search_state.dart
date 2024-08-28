@@ -17,9 +17,13 @@ final class SearchStartedInProgress extends SearchState {
 
 }
 final class SearchStartedSuccess extends SearchState {
+  var users;
+  var anime;
+  var manga;
+  SearchStartedSuccess([this.users,this.anime,this.manga]);
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [users,anime,manga];
   //Users users;
 }
 final class SearchStartedFailure extends SearchState {

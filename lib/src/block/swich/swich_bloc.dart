@@ -8,8 +8,20 @@ part 'swich_state.dart';
 
 class SwichBloc extends Bloc<SwichEvent, SwichState> {
   SwichBloc() : super(SwichState()) {
-    on<SwichEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<SwichUserPressed>(_pressedUser);
+    on<SwichAnimePressed>(_pressedAnime);
+    on<SwichMangaPressed>(_pressedManga);
+  }
+  _pressedUser(SwichUserPressed event,Emitter<SwichState> emit ){
+    emit(SwichState(status: SwichStatus.user));
+    print('users');
+  }
+  _pressedAnime(SwichAnimePressed event,Emitter<SwichState> emit ){
+    emit(SwichState(status: SwichStatus.anime));
+    print('anime');
+  }
+  _pressedManga(SwichMangaPressed event,Emitter<SwichState> emit ){
+    emit(SwichState(status: SwichStatus.manga));
+    print('manga');
   }
 }

@@ -1,5 +1,15 @@
 part of 'swich_bloc.dart';
 
-@immutable
-sealed class SwichEvent {
+
+abstract class  SwichEvent {
+}
+
+ final class SwichUserPressed extends SwichEvent{
+
+ }
+final class SwichMangaPressed extends SwichEvent{
+
+}
+final class SwichAnimePressed extends SwichEvent{
+
 }
