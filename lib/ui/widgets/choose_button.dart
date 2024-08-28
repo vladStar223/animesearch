@@ -31,7 +31,7 @@ class ChooseButton extends StatelessWidget {
               onPressed: () {
                 print('button');
 
-                BlocProvider.of<SwichBloc>(context).state.status= SwichStatus.anime;
+                //BlocProvider.of<SwichBloc>(context).state.status= SwichStatus.anime;
                 //BlocProvider.of<SearchBloc>(context).add(SearchStarted(BlocProvider.of<SwichBloc>(context).state.status));
               },
               child: Text('User'));

@@ -19,13 +19,13 @@ class _SearchState extends State<Search> {
     return SearchBar(
       leading: const Icon(Icons.search),
       autoFocus: true,
-      hintText: 'Search',
+      hintText: 'Search User',
       controller: _textEditingController,
       onChanged: (String value) {
         print('0y8-yg7807878');
       },
       onTap: () {
-        _textEditingController.clear();
+        //_textEditingController.clear();
         // The code below only works with SearchAnchor
         // _searchController.openView();
       },

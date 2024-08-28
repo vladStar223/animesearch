@@ -1,19 +1,33 @@
 part of 'search_bloc.dart';
 
 @immutable
-sealed class SearchState {}
+sealed class SearchState extends Equatable {}
 
 
 final class SearchInitial extends SearchState {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
 
 }
 final class SearchStartedInProgress extends SearchState {
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
 
 }
 final class SearchStartedSuccess extends SearchState {
-
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
+  //Users users;
 }
 final class SearchStartedFailure extends SearchState {
+  SearchStartedFailure(this.exception);
+  final Object? exception;
+  @override
+  // TODO: implement props
+  List<Object?> get props => [exception];
 
 }
 //state searching

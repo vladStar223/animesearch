@@ -1,10 +1,12 @@
 
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
 import '../../domain/api_clients/api.dart';
+import '../../domain/entity/User/users.dart';
 import '../swich/swich_bloc.dart';
 part 'search_event.dart';
 part 'search_state.dart';
