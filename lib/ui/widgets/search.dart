@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:animesearch/src/block/search/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../src/block/swich/swich_bloc.dart';
 
@@ -19,6 +20,7 @@ class _SearchState extends State<Search> {
     // TODO: implement build
     final TextEditingController _textEditingController = TextEditingController();
     String status;
+    var block =BlocProvider.of<SearchBloc>(context);
     return BlocBuilder<SwichBloc, SwichState>(
       builder: (context, state) {
         switch(state.status){
@@ -30,25 +32,53 @@ class _SearchState extends State<Search> {
             status = 'Search anime';
           case SwichStatus.manga:
             status = 'Search manga';
+
+        }if(state.input){
+          return SearchBar(
+            leading: const Icon(Icons.search),
+            autoFocus: true,
+            hintText: status,
+            controller: _textEditingController,
+            onChanged: (String value) {
+              block.add(SearchStarted(state.status,value));
+              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text.length));
+            },
+            onTap: () {
+              //_textEditingController.clear();
+              // The code below only works with SearchAnchor;
+            },
+            trailing: [
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () {
+                  _textEditingController.clear();
+                },
+              ),
+            ],
+          );
         }
-        return SearchBar(
-          leading: const Icon(Icons.search),
-          autoFocus: true,
-          hintText: status,
-          controller: _textEditingController,
-          onChanged: (String value) {
-            BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status,value));
-          },
-          onTap: () {
-            //_textEditingController.clear();
-            // The code below only works with SearchAnchor
-            // _searchController.openView();
-          },
-        );
-      },
+        else{
+          return SearchBar(
+            leading: const Icon(Icons.search),
+            autoFocus: true,
+            hintText: status,
+            controller: _textEditingController,
+            onChanged: (String value) {
+              block.add(SearchStarted(state.status,value));
+              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text.length));
+            },
+            onTap: () {
+              //_textEditingController.clear();
+              // The code below only works with SearchAnchor;
+            },
+          );
+        }
+      }
+
     );
     throw UnimplementedError();
   }
+
 }
 
 /*

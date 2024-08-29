@@ -14,7 +14,7 @@ ThemeData themeData(){
       //overlayColor: WidgetStateProperty.all(Colors.blue),
       elevation: WidgetStateProperty.all(15.0),
       constraints: const BoxConstraints(
-          minWidth: 250.0, maxWidth:460, minHeight: 44.0
+          minWidth: 250.0, maxWidth:460, minHeight: 46.0,maxHeight: 46,
       ),
       shape: WidgetStateProperty.all(const ContinuousRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),

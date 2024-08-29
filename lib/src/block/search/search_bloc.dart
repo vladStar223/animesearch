@@ -1,9 +1,13 @@
 
 
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+
 
 import '../../domain/api_clients/api.dart';
 import '../../domain/entity/User/users.dart';
@@ -13,14 +17,14 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
-    on<SearchStarted>(_start);
+    on<SearchStarted>(_start,transformer: droppable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
     on<SearchUserButtonGet>(_getUsers);
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
 
     switch(event.status){
       case SwichStatus.initial:
-        print('goo1');
+        print('sfs');
       case SwichStatus.user:
         emit(SearchStartedInProgress());
         add(SearchUserButtonGet(event.text));
