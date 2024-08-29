@@ -17,7 +17,7 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
-    on<SearchStarted>(_start,transformer: droppable());
+    on<SearchStarted>(_start,transformer: droppable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
     on<SearchUserButtonGet>(_getUsers);
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
