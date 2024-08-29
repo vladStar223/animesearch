@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import '../search/search_bloc.dart';
@@ -11,17 +13,27 @@ class SwichBloc extends Bloc<SwichEvent, SwichState> {
     on<SwichUserPressed>(_pressedUser);
     on<SwichAnimePressed>(_pressedAnime);
     on<SwichMangaPressed>(_pressedManga);
+    on<SwichTextInput>(_inputText);
   }
   _pressedUser(SwichUserPressed event,Emitter<SwichState> emit ){
-    emit(SwichState(status: SwichStatus.user));
+    emit(state.copyWith(status: SwichStatus.user));
     print('users');
   }
   _pressedAnime(SwichAnimePressed event,Emitter<SwichState> emit ){
-    emit(SwichState(status: SwichStatus.anime));
+    emit(state.copyWith(status: SwichStatus.anime));
     print('anime');
   }
   _pressedManga(SwichMangaPressed event,Emitter<SwichState> emit ){
-    emit(SwichState(status: SwichStatus.manga));
+    emit(state.copyWith(status: SwichStatus.manga));
     print('manga');
+  }
+  _inputText(SwichTextInput event,Emitter<SwichState> emit ){
+    if(event.text > 0) {
+      emit(state.copyWith(input: true));
+    }
+    else{
+      emit(state.copyWith(input: false));
+    }
+
   }
 }

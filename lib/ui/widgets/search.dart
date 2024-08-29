@@ -32,25 +32,53 @@ class _SearchState extends State<Search> {
             status = 'Search anime';
           case SwichStatus.manga:
             status = 'Search manga';
+
+        }if(state.input){
+          return SearchBar(
+            leading: const Icon(Icons.search),
+            autoFocus: true,
+            hintText: status,
+            controller: _textEditingController,
+            onChanged: (String value) {
+              block.add(SearchStarted(state.status,value));
+              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text.length));
+            },
+            onTap: () {
+              //_textEditingController.clear();
+              // The code below only works with SearchAnchor;
+            },
+            trailing: [
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () {
+                  _textEditingController.clear();
+                },
+              ),
+            ],
+          );
         }
-        return SearchBar(
-          leading: const Icon(Icons.search),
-          autoFocus: true,
-          hintText: status,
-          controller: _textEditingController,
-          onChanged: (String value) {
-            block.add(SearchStarted(state.status,value));
-          },
-          onTap: () {
-            //_textEditingController.clear();
-            // The code below only works with SearchAnchor
-            // _searchController.openView();
-          },
-        );
-      },
+        else{
+          return SearchBar(
+            leading: const Icon(Icons.search),
+            autoFocus: true,
+            hintText: status,
+            controller: _textEditingController,
+            onChanged: (String value) {
+              block.add(SearchStarted(state.status,value));
+              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text.length));
+            },
+            onTap: () {
+              //_textEditingController.clear();
+              // The code below only works with SearchAnchor;
+            },
+          );
+        }
+      }
+
     );
     throw UnimplementedError();
   }
+
 }
 
 /*
