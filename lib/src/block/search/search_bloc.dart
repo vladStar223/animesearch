@@ -42,7 +42,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     try{
       var api  = ApiClient();
       Users users =  await api.fetchUsers(event.text);
-      emit(SearchStartedSuccess(users));
+      if(users.data.isEmpty){
+        emit(SearchStartedSuccessEmpty());
+      }
+      else{
+        emit(SearchStartedSuccess(users));
+      }
     }catch(e){
       emit(SearchStartedFailure(e));
     }finally{
