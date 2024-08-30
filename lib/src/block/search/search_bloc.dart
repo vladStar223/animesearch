@@ -2,9 +2,11 @@
 
 import 'dart:async';
 
+import 'package:animesearch/src/domain/exception/api_exception.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,7 +20,7 @@ part 'search_state.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
     on<SearchStarted>(_start,transformer: droppable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
-    on<SearchUserButtonGet>(_getUsers);
+    on<SearchUserButtonGet>(_getUsers,transformer:droppable());
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
 
@@ -42,13 +44,20 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     try{
       var api  = ApiClient();
       Users users =  await api.fetchUsers(event.text);
-      //emit(SearchStartedSuccessEmpty());
-      print(users.runtimeType);
-      emit(SearchStartedSuccess(users));
-    }catch(e){
-      emit(SearchStartedFailure(e));
-    }finally{
-     print('Отработало');
+      if(users.data.isEmpty){
+       emit(SearchStartedEmpty());
+      }
+      else{
+        emit(SearchStartedSuccess(users));
+      }
+    }on EmptyRequestException  catch(e){
+      emit(SearchStartedEmpty());
+    }on TypeError catch(e){
+      //print(e.toString());
+      emit(SearchStartedEmpty());
+    }
+    catch(e){
+      print(e.runtimeType);
     }
 
   }

@@ -8,7 +8,6 @@ import '../entity/User/users.dart';
 import '../exception/api_exception.dart';
 class ApiClient {
   Future<dynamic> fetchUsers(String name) async {
-    try {
       final response = await http
           .get(Uri.parse('https://api.jikan.moe/v4/users').replace(
         queryParameters: {
@@ -18,6 +17,8 @@ class ApiClient {
       ));
       switch(response.statusCode) {
         case 200:{
+          //print(response.statusCode);
+          //print(response.body.contains('status'));
           return Users.fromJson(jsonDecode(response.body));
         }
         case 500:{
@@ -33,13 +34,6 @@ class ApiClient {
           throw ServerNotResponseException();
         }
       }
-
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-      throw Exception(e.toString());
-    }
   }//запрос для поиска пользователй
   Future<dynamic> fetchAnime() async {
     try {
