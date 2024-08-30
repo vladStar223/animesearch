@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../entity/User/users.dart';
+import '../exception/api_exception.dart';
 class ApiClient {
   Future<dynamic> fetchUsers(String name) async {
     try {
@@ -15,14 +16,28 @@ class ApiClient {
           //new type maybe will be
         },
       ));
-      if (response.statusCode == 200) {
-
-        return Users.fromJson(jsonDecode(response.body));
-      } else {
-        throw Exception('Failed to load');
+      switch(response.statusCode) {
+        case 200:{
+          return Users.fromJson(jsonDecode(response.body));
+        }
+        case 500:{
+          throw EmptyRequestException();
+        }
+        case 429:{
+          throw ManyRequestException();
+        }
+        case 404:{
+          throw NotFoundException(name);
+        }
+        case 503:{
+          throw ServerNotResponseException();
+        }
       }
+
     } catch (e) {
-      print('888');
+      if (kDebugMode) {
+        print(e);
+      }
       throw Exception(e.toString());
     }
   }//запрос для поиска пользователй

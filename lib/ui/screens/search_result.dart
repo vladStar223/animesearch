@@ -1,4 +1,5 @@
 import 'package:animesearch/ui/widgets/default_result.dart';
+import 'package:animesearch/ui/widgets/empty_result.dart';
 import 'package:animesearch/ui/widgets/progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,9 @@ class SearchResult extends StatelessWidget {
         }
         if(state is SearchStartedSuccess){
           return Expanded(child: ListResult(state.users));
+        }
+        if(state is SearchStartedEmpty){
+          return Expanded(child: EmptyResult());
         }
         return const Expanded(child: DefaultResult());
       },

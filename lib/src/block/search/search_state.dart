@@ -34,7 +34,7 @@ final class SearchStartedFailure extends SearchState {
   List<Object?> get props => [exception];
 
 }
-final class SearchStartedSuccessEmpty extends SearchState{
+final class SearchStartedEmpty extends SearchState{
   @override
   // TODO: implement props
   List<Object?> get props => [];
