@@ -9,6 +9,7 @@ part of 'data_anime.dart';
 DataAnime _$DataAnimeFromJson(Map<String, dynamic> json) => DataAnime(
       (json['mal_id'] as num).toInt(),
       json['url'] as String,
+      Images.fromJson(json['images'] as Map<String, dynamic>),
       Trailer.fromJson(json['trailer'] as Map<String, dynamic>),
       json['approved'] as bool,
       (json['titles'] as List<dynamic>)
@@ -65,6 +66,7 @@ DataAnime _$DataAnimeFromJson(Map<String, dynamic> json) => DataAnime(
 Map<String, dynamic> _$DataAnimeToJson(DataAnime instance) => <String, dynamic>{
       'mal_id': instance.mal_id,
       'url': instance.url,
+      'images': instance.images,
       'trailer': instance.trailer,
       'approved': instance.approved,
       'titles': instance.titles,
@@ -160,24 +162,24 @@ Aired _$AiredFromJson(Map<String, dynamic> json) => Aired(
       json['from'] as String,
       json['to'] as String,
       Prop.fromJson(json['prop'] as Map<String, dynamic>),
+      json['string'] as String,
     );
 
 Map<String, dynamic> _$AiredToJson(Aired instance) => <String, dynamic>{
       'from': instance.from,
       'to': instance.to,
       'prop': instance.prop,
+      'string': instance.string,
     };
 
 Prop _$PropFromJson(Map<String, dynamic> json) => Prop(
       From.fromJson(json['from'] as Map<String, dynamic>),
       To.fromJson(json['to'] as Map<String, dynamic>),
-      json['string'] as String,
     );
 
 Map<String, dynamic> _$PropToJson(Prop instance) => <String, dynamic>{
       'from': instance.from,
       'to': instance.to,
-      'string': instance.string,
     };
 
 From _$FromFromJson(Map<String, dynamic> json) => From(

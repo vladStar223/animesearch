@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:animesearch/src/domain/entity/Anime/anime.dart';
 import 'package:animesearch/src/domain/exception/api_exception.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
@@ -21,6 +22,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
     on<SearchStarted>(_start,transformer: droppable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
     on<SearchUserButtonGet>(_getUsers,transformer:droppable());
+    on<SearchAnimeButtonGet>(_getAnime,transformer:droppable());
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
 
@@ -34,7 +36,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         // TODO: Handle this case.
       case SwichStatus.anime:
         // TODO: Handle this case.
-        print('goo2');
+        emit(SearchStartedInProgress());
+        add(SearchAnimeButtonGet(event.text));
+        print('anime_search');
       case SwichStatus.manga:
         print('goo3');
         // TODO: Handle this case.
@@ -61,6 +65,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     }
 
   }
+  _getAnime(SearchAnimeButtonGet event,Emitter<SearchState> emit ) async {
+    var api  = ApiClient();
+    Anime anime =  await api.fetchAnime(event.text);
+    print(anime.data[0]);
 
+  }
 
 }

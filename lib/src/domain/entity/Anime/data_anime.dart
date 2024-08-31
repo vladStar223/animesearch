@@ -7,6 +7,7 @@ part 'data_anime.g.dart';
 class DataAnime {
   int mal_id;
   String url;
+  Images images;
   Trailer trailer;
   bool approved;
   List<Titles> titles;
@@ -43,6 +44,7 @@ class DataAnime {
   DataAnime(
     this.mal_id,
     this.url,
+    this.images,
     this.trailer,
     this.approved,
     this.titles,
@@ -130,7 +132,8 @@ class Aired{
   String from;
   String to;
   Prop prop;
-  Aired(this.from,this.to,this.prop);
+  String string;
+  Aired(this.from,this.to,this.prop,this.string);
   factory Aired.fromJson(Map<String, dynamic> json) => _$AiredFromJson(json);
   Map<String, dynamic> toJson() => _$AiredToJson(this);
 }
@@ -138,8 +141,7 @@ class Aired{
 class Prop{
   From from;
   To to;
-  String string;
-  Prop(this.from,this.to,this.string);
+  Prop(this.from,this.to);
   factory Prop.fromJson(Map<String, dynamic> json) => _$PropFromJson(json);
   Map<String, dynamic> toJson() => _$PropToJson(this);
 
