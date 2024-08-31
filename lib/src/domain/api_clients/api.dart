@@ -15,6 +15,7 @@ class ApiClient {
           //new type maybe will be
         },
       ));
+      //print(response.headers.keys);
       switch(response.statusCode) {
         case 200:{
           //print(response.statusCode);
