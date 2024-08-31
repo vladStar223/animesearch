@@ -68,7 +68,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   _getAnime(SearchAnimeButtonGet event,Emitter<SearchState> emit ) async {
     var api  = ApiClient();
     Anime anime =  await api.fetchAnime(event.text);
-    print(anime.data[0]);
+    //print(anime.data[0].synopsis.replaceAll('\n', ''));
 
   }
 

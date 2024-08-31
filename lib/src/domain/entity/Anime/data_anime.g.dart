@@ -16,7 +16,7 @@ DataAnime _$DataAnimeFromJson(Map<String, dynamic> json) => DataAnime(
           .map((e) => Titles.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['title'] as String,
-      json['title_english'] as String,
+      json['title_english'] as String?,
       json['title_japanese'] as String,
       (json['title_synonyms'] as List<dynamic>)
           .map((e) => e as String)
@@ -162,7 +162,7 @@ Aired _$AiredFromJson(Map<String, dynamic> json) => Aired(
       json['from'] as String,
       json['to'] as String,
       Prop.fromJson(json['prop'] as Map<String, dynamic>),
-      json['string'] as String,
+      json['string'] as String?,
     );
 
 Map<String, dynamic> _$AiredToJson(Aired instance) => <String, dynamic>{

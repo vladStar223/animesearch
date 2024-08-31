@@ -12,7 +12,7 @@ class DataAnime {
   bool approved;
   List<Titles> titles;
   String title;
-  String title_english;
+  String? title_english;
   String title_japanese;
   List<String> title_synonyms;
   String type;
@@ -132,7 +132,7 @@ class Aired{
   String from;
   String to;
   Prop prop;
-  String string;
+  String? string;
   Aired(this.from,this.to,this.prop,this.string);
   factory Aired.fromJson(Map<String, dynamic> json) => _$AiredFromJson(json);
   Map<String, dynamic> toJson() => _$AiredToJson(this);

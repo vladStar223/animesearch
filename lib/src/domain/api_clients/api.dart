@@ -52,8 +52,7 @@ class ApiClient {
         //print(response.statusCode);
         //print(response.body.contains('status'));
         print(response.body);
-        var x = Anime.fromJson(jsonDecode(response.body));
-        print('34');
+        return Anime.fromJson(jsonDecode(response.body));
       }
       case 500:{
         throw EmptyRequestException();
