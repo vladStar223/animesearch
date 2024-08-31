@@ -1,3 +1,6 @@
+import 'package:animesearch/ui/widgets/default_result.dart';
+import 'package:animesearch/ui/widgets/empty_result.dart';
+import 'package:animesearch/ui/widgets/progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,10 +17,16 @@ class SearchResult extends StatelessWidget {
 
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
+        if(state is SearchStartedInProgress){
+          return Expanded(child: ProgressBar());
+        }
         if(state is SearchStartedSuccess){
           return Expanded(child: ListResult(state.users));
         }
-        return Expanded(child: Text('Testing'));
+        if(state is SearchStartedEmpty){
+          return Expanded(child: EmptyResult());
+        }
+        return const Expanded(child: DefaultResult());
       },
     );
     throw UnimplementedError();
