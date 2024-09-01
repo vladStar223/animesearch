@@ -20,7 +20,7 @@ final class SearchStartedSuccess extends SearchState {
   var users;
   var anime;
   var manga;
-  SearchStartedSuccess([this.users,this.anime,this.manga]);
+  SearchStartedSuccess({this.users,this.anime,this.manga});
   @override
   // TODO: implement props
   List<Object?> get props => [users,anime,manga];

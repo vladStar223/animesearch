@@ -16,7 +16,8 @@ class ApiClient {
           //new type maybe will be
         },
       ));
-      //print(response.headers.keys);
+      print(response.body);
+      print(response.statusCode);
       switch(response.statusCode) {
         case 200:{
           //print(response.statusCode);
@@ -42,16 +43,16 @@ class ApiClient {
         .get(Uri.parse('https://api.jikan.moe/v4/anime').replace(
       queryParameters: {
         'type':"tv",
-        'q':'cow',
+        'q':name,
         //new type maybe will be
       },
     ));
-    print(response.statusCode);
+    //print(response.body);
     switch(response.statusCode) {
       case 200:{
         //print(response.statusCode);
         //print(response.body.contains('status'));
-        print(response.body);
+        //print(response.body);
         return Anime.fromJson(jsonDecode(response.body));
       }
       case 500:{

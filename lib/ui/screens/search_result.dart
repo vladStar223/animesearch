@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/block/search/search_bloc.dart';
-import '../widgets/list_result.dart';
-import '../widgets/user_card.dart';
+import '../../src/block/swich/swich_bloc.dart';
+import '../widgets/list_anime.dart';
+import '../widgets/list_users.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -17,16 +18,33 @@ class SearchResult extends StatelessWidget {
 
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        if(state is SearchStartedInProgress){
-          return Expanded(child: ProgressBar());
+        switch(state){
+          case SearchInitial():
+            // TODO: Handle this case.
+          case SearchStartedInProgress():
+            return Expanded(child: ProgressBar());
+          case SearchStartedSuccess():
+            SwichStatus status = BlocProvider.of<SwichBloc>(context).state.status;
+            switch(status){
+              case SwichStatus.initial:
+                return Text('3334');
+              case SwichStatus.user:
+                return Expanded(child: ListUsersResult(state.users));
+                // TODO: Handle this case.
+              case SwichStatus.anime:
+                return Expanded(child: ListAnimeResult(state.anime));
+                // TODO: Handle this case.
+              case SwichStatus.manga:
+                return Text('34');
+                // TODO: Handle this case.
+            }
+          case SearchStartedFailure():
+            // TODO: Handle this case.
+          case SearchStartedEmpty():
+            return Expanded(child: EmptyResult());
+            default:return const Expanded(child: DefaultResult());
         }
-        if(state is SearchStartedSuccess){
-          return Expanded(child: ListResult(state.users));
-        }
-        if(state is SearchStartedEmpty){
-          return Expanded(child: EmptyResult());
-        }
-        return const Expanded(child: DefaultResult());
+
       },
     );
     throw UnimplementedError();

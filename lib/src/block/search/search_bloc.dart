@@ -52,7 +52,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
        emit(SearchStartedEmpty());
       }
       else{
-        emit(SearchStartedSuccess(users));
+        emit(SearchStartedSuccess(users: users));
       }
     }on EmptyRequestException  catch(e){
       emit(SearchStartedEmpty());
@@ -66,9 +66,28 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   }
   _getAnime(SearchAnimeButtonGet event,Emitter<SearchState> emit ) async {
-    var api  = ApiClient();
-    Anime anime =  await api.fetchAnime(event.text);
-    //print(anime.data[0].synopsis.replaceAll('\n', ''));
+
+    try{
+      var api  = ApiClient();
+      Anime anime =  await api.fetchAnime(event.text);
+      //
+      //print(anime.data[0].title);
+      if(anime .data.isEmpty){
+        emit(SearchStartedEmpty());
+      }
+      else{
+        //print(anime.data[0].synopsis.replaceAll('\n', ''));
+        emit(SearchStartedSuccess(anime: anime));
+      }
+    }on EmptyRequestException  catch(e){
+      emit(SearchStartedEmpty());
+    }on TypeError catch(e){
+      //print(e.toString());
+      emit(SearchStartedEmpty());
+    }
+    catch(e){
+      print(e.runtimeType);
+    }
 
   }
 
