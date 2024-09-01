@@ -42,7 +42,6 @@ class ApiClient {
     final response = await http
         .get(Uri.parse('https://api.jikan.moe/v4/anime').replace(
       queryParameters: {
-        'type':"tv",
         'q':name,
         //new type maybe will be
       },

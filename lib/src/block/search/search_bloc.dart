@@ -70,19 +70,19 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     try{
       var api  = ApiClient();
       Anime anime =  await api.fetchAnime(event.text);
-      //
       //print(anime.data[0].title);
       if(anime .data.isEmpty){
         emit(SearchStartedEmpty());
       }
       else{
-        //print(anime.data[0].synopsis.replaceAll('\n', ''));
+        print(anime.data[0].synopsis?.replaceAll('\n', ''));
         emit(SearchStartedSuccess(anime: anime));
       }
     }on EmptyRequestException  catch(e){
+      //print(e.toString());
       emit(SearchStartedEmpty());
     }on TypeError catch(e){
-      //print(e.toString());
+      print(e.toString());
       emit(SearchStartedEmpty());
     }
     catch(e){
