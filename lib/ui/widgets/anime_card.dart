@@ -13,28 +13,19 @@ class AnimeCard extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Card(
-      child: Column(
+
+      child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            title: Text(name),
-            leading: CachedNetworkImage(
-              imageUrl: urlImage,
-              imageBuilder: (context, imageProvider) => CircleAvatar(
-                backgroundImage: imageProvider,
-              ),
-              placeholder: (context, url) => Icon(Icons.person_2),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-            trailing: TextButton(onPressed: () async {
-              final Uri _url = Uri.parse(urlProfile);
-              await launchUrl(_url,mode: LaunchMode.externalApplication);
-              //BlocProvider.of<SwichBloc>(context).state.status= SwichStatus.anime;
-            }, child: Text('add')),
-          ),
-          //subtitle: const Text('last_online'),
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 200,
+              width: 200,
+              child: Image.network(urlImage)),
+          Flexible(child: Column(children: [Text(name),],))
         ],
-      ),
+      )
     );
     throw UnimplementedError();
   }

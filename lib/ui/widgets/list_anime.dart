@@ -15,7 +15,7 @@ class ListAnimeResult extends StatelessWidget{
         itemBuilder: (BuildContext context, int index) {
           return AnimeCard(
               anime.data[index].title_english?? anime.data[index].title,
-              anime.data[index].images.jpg.small_image_url,
+              anime.data[index].images.jpg.large_image_url,
               anime.data[index].url,
           );
         }
