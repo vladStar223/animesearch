@@ -16,7 +16,7 @@ class ListAnimeResult extends StatelessWidget{
           return AnimeCard(
               anime.data[index].title_english?? anime.data[index].title,
               anime.data[index].images.jpg.large_image_url,
-              anime.data[index].url,
+              anime.data[index].url,anime.data[index].synopsis??'Not synopsis',
           );
         }
     );

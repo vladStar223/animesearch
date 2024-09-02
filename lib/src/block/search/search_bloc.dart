@@ -75,7 +75,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(SearchStartedEmpty());
       }
       else{
-        print(anime.data[0].synopsis?.replaceAll('\n', ''));
+        //print(anime.data[0].synopsis?.replaceAll('\n', ''));
         emit(SearchStartedSuccess(anime: anime));
       }
     }on EmptyRequestException  catch(e){
