@@ -11,55 +11,55 @@ DataAnime _$DataAnimeFromJson(Map<String, dynamic> json) => DataAnime(
       json['url'] as String,
       Images.fromJson(json['images'] as Map<String, dynamic>),
       Trailer.fromJson(json['trailer'] as Map<String, dynamic>),
-      json['approved'] as bool,
+      json['approved'] as bool?,
       (json['titles'] as List<dynamic>)
           .map((e) => Titles.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['title'] as String,
       json['title_english'] as String?,
-      json['title_japanese'] as String,
+      json['title_japanese'] as String?,
       (json['title_synonyms'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      json['type'] as String,
-      json['source'] as String,
-      (json['episodes'] as num).toInt(),
-      json['status'] as String,
-      json['airing'] as bool,
+      json['type'] as String?,
+      json['source'] as String?,
+      (json['episodes'] as num?)?.toInt(),
+      json['status'] as String?,
+      json['airing'] as bool?,
       Aired.fromJson(json['aired'] as Map<String, dynamic>),
-      json['duration'] as String,
-      json['rating'] as String,
-      (json['score'] as num).toInt(),
-      (json['scored_by'] as num).toInt(),
-      (json['rank'] as num).toInt(),
-      (json['popularity'] as num).toInt(),
-      (json['members'] as num).toInt(),
-      (json['favorites'] as num).toInt(),
-      json['synopsis'] as String,
-      json['background'] as String,
-      json['season'] as String,
-      (json['year'] as num).toInt(),
+      json['duration'] as String?,
+      json['rating'] as String?,
+      (json['score'] as num?)?.toInt(),
+      (json['scored_by'] as num?)?.toInt(),
+      (json['rank'] as num?)?.toInt(),
+      (json['popularity'] as num?)?.toInt(),
+      (json['members'] as num?)?.toInt(),
+      (json['favorites'] as num?)?.toInt(),
+      json['synopsis'] as String?,
+      json['background'] as String?,
+      json['season'] as String?,
+      (json['year'] as num?)?.toInt(),
       Broadcast.fromJson(json['broadcast'] as Map<String, dynamic>),
-      (json['producers'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['producers'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['licensors'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['licensors'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['studios'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['studios'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['genres'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['genres'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['explicit_genres'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['explicit_genres'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['themes'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['themes'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['demographics'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['demographics'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -137,9 +137,9 @@ Map<String, dynamic> _$WebpToJson(Webp instance) => <String, dynamic>{
     };
 
 Trailer _$TrailerFromJson(Map<String, dynamic> json) => Trailer(
-      json['youtube_id'] as String,
-      json['url'] as String,
-      json['embed_url'] as String,
+      json['youtube_id'] as String?,
+      json['url'] as String?,
+      json['embed_url'] as String?,
     );
 
 Map<String, dynamic> _$TrailerToJson(Trailer instance) => <String, dynamic>{
@@ -159,8 +159,8 @@ Map<String, dynamic> _$TitlesToJson(Titles instance) => <String, dynamic>{
     };
 
 Aired _$AiredFromJson(Map<String, dynamic> json) => Aired(
-      json['from'] as String,
-      json['to'] as String,
+      json['from'] as String?,
+      json['to'] as String?,
       Prop.fromJson(json['prop'] as Map<String, dynamic>),
       json['string'] as String?,
     );
@@ -173,8 +173,12 @@ Map<String, dynamic> _$AiredToJson(Aired instance) => <String, dynamic>{
     };
 
 Prop _$PropFromJson(Map<String, dynamic> json) => Prop(
-      From.fromJson(json['from'] as Map<String, dynamic>),
-      To.fromJson(json['to'] as Map<String, dynamic>),
+      json['from'] == null
+          ? null
+          : From.fromJson(json['from'] as Map<String, dynamic>),
+      json['to'] == null
+          ? null
+          : To.fromJson(json['to'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PropToJson(Prop instance) => <String, dynamic>{
@@ -183,9 +187,9 @@ Map<String, dynamic> _$PropToJson(Prop instance) => <String, dynamic>{
     };
 
 From _$FromFromJson(Map<String, dynamic> json) => From(
-      (json['day'] as num).toInt(),
-      (json['month'] as num).toInt(),
-      (json['year'] as num).toInt(),
+      (json['day'] as num?)?.toInt(),
+      (json['month'] as num?)?.toInt(),
+      (json['year'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$FromToJson(From instance) => <String, dynamic>{
@@ -195,9 +199,9 @@ Map<String, dynamic> _$FromToJson(From instance) => <String, dynamic>{
     };
 
 To _$ToFromJson(Map<String, dynamic> json) => To(
-      (json['day'] as num).toInt(),
-      (json['month'] as num).toInt(),
-      (json['year'] as num).toInt(),
+      (json['day'] as num?)?.toInt(),
+      (json['month'] as num?)?.toInt(),
+      (json['year'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ToToJson(To instance) => <String, dynamic>{
@@ -207,10 +211,10 @@ Map<String, dynamic> _$ToToJson(To instance) => <String, dynamic>{
     };
 
 Broadcast _$BroadcastFromJson(Map<String, dynamic> json) => Broadcast(
-      json['day'] as String,
-      json['time'] as String,
-      json['timezone'] as String,
-      json['string'] as String,
+      json['day'] as String?,
+      json['time'] as String?,
+      json['timezone'] as String?,
+      json['string'] as String?,
     );
 
 Map<String, dynamic> _$BroadcastToJson(Broadcast instance) => <String, dynamic>{
@@ -222,10 +226,10 @@ Map<String, dynamic> _$BroadcastToJson(Broadcast instance) => <String, dynamic>{
 
 AboutHumanOrCompany _$AboutHumanOrCompanyFromJson(Map<String, dynamic> json) =>
     AboutHumanOrCompany(
-      (json['mal_id'] as num).toInt(),
-      json['type'] as String,
-      json['name'] as String,
-      json['url'] as String,
+      (json['mal_id'] as num?)?.toInt(),
+      json['type'] as String?,
+      json['name'] as String?,
+      json['url'] as String?,
     );
 
 Map<String, dynamic> _$AboutHumanOrCompanyToJson(

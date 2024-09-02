@@ -6,9 +6,12 @@
 import 'package:animesearch/src/domain/entity/User/users.dart';
 import 'package:animesearch/ui/widgets/user_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListResult extends StatelessWidget{
-  ListResult(this.users,{super.key});
+import '../../src/block/swich/swich_bloc.dart';
+
+class ListUsersResult extends StatelessWidget{
+  ListUsersResult(this.users,{super.key});
   Users users;
   @override
   Widget build(BuildContext context) {
