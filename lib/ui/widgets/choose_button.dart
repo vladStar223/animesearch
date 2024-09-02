@@ -21,7 +21,7 @@ class UsersButton extends StatelessWidget {
               onPressed: () {
                 BlocProvider.of<SwichBloc>(context).add(SwichUserPressed());
               },
-              child: Text('User'));
+              child: Text('Users'));
         }
         else{
           return TextButton(
