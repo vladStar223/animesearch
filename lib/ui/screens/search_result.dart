@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/block/search/search_bloc.dart';
 import '../../src/block/swich/swich_bloc.dart';
-import '../widgets/list_anime.dart';
-import '../widgets/list_users.dart';
+import '../widgets/list/list_anime.dart';
+import '../widgets/list/list_users.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
