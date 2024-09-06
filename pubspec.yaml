@@ -46,6 +46,7 @@ dependencies:
   json_annotation: ^4.9.0
   cached_network_image: ^3.4.1
   url_launcher:
+  rxdart: ^0.28.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -20,9 +20,11 @@ final class SearchUserButtonGet extends SearchEvent{
 
 }//when pressed user button
 final class SearchMangaButtonGet extends SearchEvent{
+  String text;
+  SearchMangaButtonGet(this.text);
   @override
   // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [text];
 
 }//when pressed manga button
 final class SearchAnimeButtonGet extends SearchEvent{

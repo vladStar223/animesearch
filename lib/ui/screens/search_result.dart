@@ -6,8 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/block/search/search_bloc.dart';
 import '../../src/block/swich/swich_bloc.dart';
-import '../widgets/list_anime.dart';
-import '../widgets/list_users.dart';
+import '../widgets/list/list_anime.dart';
+import '../widgets/list/list_manga.dart';
+import '../widgets/list/list_users.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -35,7 +36,7 @@ class SearchResult extends StatelessWidget {
                 return Expanded(child: ListAnimeResult(state.anime));
                 // TODO: Handle this case.
               case SwichStatus.manga:
-                return Text('34');
+                return Expanded(child: ListMangaResult(state.manga));
                 // TODO: Handle this case.
             }
           case SearchStartedFailure():

@@ -16,11 +16,13 @@ class SwichBloc extends Bloc<SwichEvent, SwichState> {
     on<SwichTextInput>(_inputText);
   }
   _pressedUser(SwichUserPressed event,Emitter<SwichState> emit ){
+    print(state.value);
     emit(state.copyWith(status: SwichStatus.user));
     print('users');
   }
   _pressedAnime(SwichAnimePressed event,Emitter<SwichState> emit ){
     emit(state.copyWith(status: SwichStatus.anime));
+    print(state.value);
     print('anime');
   }
   _pressedManga(SwichMangaPressed event,Emitter<SwichState> emit ){
@@ -28,8 +30,9 @@ class SwichBloc extends Bloc<SwichEvent, SwichState> {
     print('manga');
   }
   _inputText(SwichTextInput event,Emitter<SwichState> emit ){
-    if(event.text > 0) {
+    if(event.text.length>0) {
       emit(state.copyWith(input: true));
+      emit(state.copyWith(value: event.text));
     }
     else{
       emit(state.copyWith(input: false));

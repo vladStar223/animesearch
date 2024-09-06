@@ -24,7 +24,7 @@ final class SwichAnimePressed extends SwichEvent{
 }
 final class SwichTextInput extends SwichEvent{
  SwichTextInput(this.text);
- int text;
+ String text;
 
   @override
   // TODO: implement props

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../src/domain/entity/Anime/anime.dart';
-import 'anime_card.dart';
+import '../../../src/domain/entity/Anime/anime.dart';
+import '../card/anime_card.dart';
 
 class ListAnimeResult extends StatelessWidget{
   ListAnimeResult(this.anime,{super.key});

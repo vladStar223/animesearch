@@ -3,6 +3,7 @@ import 'package:animesearch/src/block/swich/swich_bloc.dart';
 import 'package:animesearch/theme/theme_app.dart';
 import 'package:animesearch/ui/screens/background.dart';
 import 'package:animesearch/ui/screens/search_result.dart';
+import 'package:animesearch/ui/widgets/card/anime_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,9 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/first',
+      routes: {
+        '/first': (context) => MyHomePage(),
+        '/about': (context) => AnimeAbout(),
+      },
       theme: themeData(),
-
-      home: MyHomePage(),
     );
   }
 }

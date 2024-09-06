@@ -1,19 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'anime.dart';
+part of 'manga.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Anime _$AnimeFromJson(Map<String, dynamic> json) => Anime(
+Manga _$MangaFromJson(Map<String, dynamic> json) => Manga(
       (json['data'] as List<dynamic>)
-          .map((e) => DataAnime.fromJson(e as Map<String, dynamic>))
+          .map((e) => DataManga.fromJson(e as Map<String, dynamic>))
           .toList(),
-      Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
+      json['pagination'] == null
+          ? null
+          : Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$AnimeToJson(Anime instance) => <String, dynamic>{
+Map<String, dynamic> _$MangaToJson(Manga instance) => <String, dynamic>{
       'pagination': instance.pagination,
       'data': instance.data,
     };

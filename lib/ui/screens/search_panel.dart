@@ -1,12 +1,12 @@
 import 'package:animesearch/src/block/swich/swich_bloc.dart';
-import 'package:animesearch/ui/widgets/list_users.dart';
+import 'package:animesearch/ui/widgets/list/list_users.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/block/search/search_bloc.dart';
 import '../widgets/choose_panel.dart';
 import '../widgets/search.dart';
-import '../widgets/user_card.dart';
+import '../widgets/card/user_card.dart';
 
 class SearchPanel extends StatelessWidget {
   const SearchPanel({super.key});

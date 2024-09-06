@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../entity/Anime/anime.dart';
+import '../entity/Manga/manga.dart';
 import '../entity/User/users.dart';
 import '../exception/api_exception.dart';
 class ApiClient {
@@ -70,18 +71,19 @@ class ApiClient {
   }//запрос для поиска аниме по названию
   Future<dynamic> fetchManga(String name) async {
     final response = await http
-        .get(Uri.parse('https://api.jikan.moe/v4/users').replace(
+        .get(Uri.parse('https://api.jikan.moe/v4/manga').replace(
       queryParameters: {
         'q':name,
         //new type maybe will be
       },
     ));
-    //print(response.headers.keys);
+    print(response.body);
     switch(response.statusCode) {
       case 200:{
-        //print(response.statusCode);
+        print(response.statusCode);
         //print(response.body.contains('status'));
-        return Users.fromJson(jsonDecode(response.body));
+        //print(response.body);
+        return Manga.fromJson(jsonDecode(response.body));
       }
       case 500:{
         throw EmptyRequestException();
