@@ -54,6 +54,7 @@ class _SearchState extends State<Search> {
                 icon: Icon(Icons.add),
                 onPressed: () {
                   _textEditingController.clear();
+                  BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text));
                 },
               ),
             ],
