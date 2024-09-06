@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 
 
 import '../../domain/api_clients/api.dart';
+import '../../domain/entity/Manga/manga.dart';
 import '../../domain/entity/User/users.dart';
 import '../swich/swich_bloc.dart';
 part 'search_event.dart';
@@ -23,6 +24,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<SearchStarted>(_start,transformer: droppable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
     on<SearchUserButtonGet>(_getUsers,transformer:droppable());
     on<SearchAnimeButtonGet>(_getAnime,transformer:droppable());
+    on<SearchMangaButtonGet>(_getManga,transformer:droppable());
   }
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
 
@@ -40,7 +42,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         add(SearchAnimeButtonGet(event.text));
         print('anime_search');
       case SwichStatus.manga:
-        print('goo3');
+        emit(SearchStartedInProgress());
+        add(SearchMangaButtonGet(event.text));
+        print('manga_search');
         // TODO: Handle this case.
     }
 }// запуск поиска
@@ -90,5 +94,28 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     }
 
   }
+  _getManga(SearchMangaButtonGet event,Emitter<SearchState> emit) async{
+    try{
+      var api  = ApiClient();
+      Manga manga =  await api.fetchManga(event.text);
+      print(manga.data[0].title);
+      if(manga .data.isEmpty){
+        emit(SearchStartedEmpty());
+      }
+      else{
+        //print(anime.data[0].synopsis?.replaceAll('\n', ''));
+        emit(SearchStartedSuccess(manga: manga));
+      }
+    }on EmptyRequestException  catch(e){
+      //print(e.toString());
+      emit(SearchStartedEmpty());
+    }on TypeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
+    catch(e){
+      print(e.runtimeType);
+    }
 
+  }
 }
