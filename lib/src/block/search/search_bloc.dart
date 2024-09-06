@@ -10,6 +10,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:rxdart/rxdart.dart';
 
 
 import '../../domain/api_clients/api.dart';
@@ -21,13 +22,18 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
-    on<SearchStarted>(_start,transformer: droppable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
-    on<SearchUserButtonGet>(_getUsers,transformer:droppable());
-    on<SearchAnimeButtonGet>(_getAnime,transformer:droppable());
-    on<SearchMangaButtonGet>(_getManga,transformer:droppable());
+    on<SearchStarted>(_start,transformer:restartable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
+    on<SearchUserButtonGet>(_getUsers);
+    on<SearchAnimeButtonGet>(_getAnime);
+    on<SearchMangaButtonGet>(_getManga);
   }
-  _start(SearchStarted event,Emitter<SearchState> emit ) async {
+  EventTransformer<E> throttleDroppable<E>() {
+    return (events, mapper) {
+      return droppable<E>().call(events.throttleTime(Duration(seconds: 3)), mapper);
+    };
+  }
 
+  _start(SearchStarted event,Emitter<SearchState> emit ) async {
     switch(event.status){
       case SwichStatus.initial:
         print('sfs');
@@ -46,12 +52,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         add(SearchMangaButtonGet(event.text));
         print('manga_search');
         // TODO: Handle this case.
+
     }
 }// запуск поиска
   _getUsers(SearchUserButtonGet event,Emitter<SearchState> emit ) async {
     try{
       var api  = ApiClient();
+      Stopwatch stopwatch = new Stopwatch()..start();
       Users users =  await api.fetchUsers(event.text);
+      stopwatch.stop();
+      print('doSomething() executed in ${stopwatch.elapsed}');
       print(users.data[0].url);
       if(users.data.isEmpty){
        emit(SearchStartedEmpty());
