@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pagination1.dart';
+part of 'pagination.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Pagination2 _$Pagination2FromJson(Map<String, dynamic> json) => Pagination2(
+Pagination _$PaginationFromJson(Map<String, dynamic> json) => Pagination(
       (json['last_visible_page'] as num).toInt(),
       json['has_next_page'] as bool,
       Items.fromJson(json['items'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$Pagination2ToJson(Pagination2 instance) =>
+Map<String, dynamic> _$PaginationToJson(Pagination instance) =>
     <String, dynamic>{
       'last_visible_page': instance.last_visible_page,
       'has_next_page': instance.has_next_page,

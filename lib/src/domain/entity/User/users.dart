@@ -3,6 +3,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import '../pagination/pagination.dart';
 import 'data.dart';
 
 part 'users.g.dart';
