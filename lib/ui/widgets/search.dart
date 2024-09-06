@@ -43,7 +43,7 @@ class _SearchState extends State<Search> {
               if(value.length>3){
                 block.add(SearchStarted(state.status,value));
               }
-              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text.length));
+              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text));
             },
             onTap: () {
               //_textEditingController.clear();
@@ -69,7 +69,7 @@ class _SearchState extends State<Search> {
               if(value.length>3){
                 block.add(SearchStarted(state.status,value));
               }
-              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text.length));
+              BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text));
             },
             onTap: () {
               //_textEditingController.clear();

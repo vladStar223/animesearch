@@ -20,6 +20,9 @@ class UsersButton extends StatelessWidget {
             ),
               onPressed: () {
                 BlocProvider.of<SwichBloc>(context).add(SwichUserPressed());
+                if(BlocProvider.of<SwichBloc>(context).state.input){
+                  BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status,state.value));
+                }
               },
               child: Text('Users'));
         }
@@ -53,6 +56,9 @@ class AnimeButton extends StatelessWidget {
               ),
               onPressed: () {
                 BlocProvider.of<SwichBloc>(context).add(SwichAnimePressed());
+                if(BlocProvider.of<SwichBloc>(context).state.input){
+                  BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status,state.value));
+                }
               },
               child: Text('Anime'));
         }
@@ -87,6 +93,9 @@ class MangaButton extends StatelessWidget {
               ),
               onPressed: () {
                 BlocProvider.of<SwichBloc>(context).add(SwichMangaPressed());
+                if(BlocProvider.of<SwichBloc>(context).state.input){
+                  BlocProvider.of<SearchBloc>(context).add(SearchStarted(state.status,state.value));
+                }
               },
               child: Text('Manga'));
         }
