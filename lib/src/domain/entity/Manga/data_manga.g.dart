@@ -21,7 +21,7 @@ DataManga _$DataMangaFromJson(Map<String, dynamic> json) => DataManga(
           .map((e) => e as String)
           .toList(),
       json['type'] as String?,
-      (json['chapters'] as num).toInt(),
+      (json['chapters'] as num?)?.toInt(),
       (json['volumes'] as num?)?.toInt(),
       json['publishing'] as bool?,
       Aired.fromJson(json['published'] as Map<String, dynamic>),
@@ -34,29 +34,29 @@ DataManga _$DataMangaFromJson(Map<String, dynamic> json) => DataManga(
       (json['favorites'] as num?)?.toInt(),
       json['synopsis'] as String?,
       json['background'] as String?,
-      (json['authors'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['authors'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['serializations'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['serializations'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['genres'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['genres'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['explicit_genres'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['explicit_genres'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['themes'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['themes'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['demographics'] as List<dynamic>)
-          .map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
+      (json['demographics'] as List<dynamic>?)
+          ?.map((e) => AboutHumanOrCompany.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['relations'] as List<dynamic>)
-          .map((e) => Relations.fromJson(e as Map<String, dynamic>))
+      (json['relations'] as List<dynamic>?)
+          ?.map((e) => Relations.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['external'] as List<dynamic>)
-          .map((e) => External.fromJson(e as Map<String, dynamic>))
+      (json['external'] as List<dynamic>?)
+          ?.map((e) => External.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

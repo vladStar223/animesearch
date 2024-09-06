@@ -19,7 +19,7 @@ class DataManga{
   String? title_japanese;
   List<String> title_synonyms;
   String? type;
-  int chapters;
+  int? chapters;
   int? volumes;
   String? status;
   bool? publishing;
@@ -32,14 +32,14 @@ class DataManga{
   int? favorites;
   String? synopsis;
   String? background;
-  List<AboutHumanOrCompany> authors;
-  List<AboutHumanOrCompany> serializations;
-  List<AboutHumanOrCompany> genres;
-  List<AboutHumanOrCompany> explicit_genres;
-  List<AboutHumanOrCompany> themes;
-  List<AboutHumanOrCompany> demographics;
-  List<Relations> relations;
-  List<External> external;
+  List<AboutHumanOrCompany>? authors;
+  List<AboutHumanOrCompany>? serializations;
+  List<AboutHumanOrCompany>? genres;
+  List<AboutHumanOrCompany>? explicit_genres;
+  List<AboutHumanOrCompany>? themes;
+  List<AboutHumanOrCompany>? demographics;
+  List<Relations>? relations;
+  List<External>? external;
   DataManga(
       this.mal_id,
       this.url,

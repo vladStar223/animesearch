@@ -8,7 +8,7 @@ import '../pagination/pagination.dart';
 part 'manga.g.dart';
 @JsonSerializable()
 class Manga{
-  final Pagination pagination;
+  final Pagination? pagination;
   List<DataManga> data;
   Manga(this.data,this.pagination);
   factory Manga.fromJson(Map<String, dynamic> json) => _$MangaFromJson(json);

@@ -10,7 +10,9 @@ Manga _$MangaFromJson(Map<String, dynamic> json) => Manga(
       (json['data'] as List<dynamic>)
           .map((e) => DataManga.fromJson(e as Map<String, dynamic>))
           .toList(),
-      Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
+      json['pagination'] == null
+          ? null
+          : Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MangaToJson(Manga instance) => <String, dynamic>{
