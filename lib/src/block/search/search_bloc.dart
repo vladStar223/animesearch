@@ -23,15 +23,21 @@ part 'search_state.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
     on<SearchStarted>(_start,transformer:restartable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
-    on<SearchUserButtonGet>(_getUsers);
-    on<SearchAnimeButtonGet>(_getAnime);
-    on<SearchMangaButtonGet>(_getManga);
+    on<SearchUserButtonGet>(_getUsers,transformer:debounceDroppable());
+    on<SearchAnimeButtonGet>(_getAnime,transformer:debounceDroppable());
+    on<SearchMangaButtonGet>(_getManga,transformer:debounceDroppable());
   }
   EventTransformer<E> throttleDroppable<E>() {
     return (events, mapper) {
-      return droppable<E>().call(events.throttleTime(Duration(seconds: 3)), mapper);
+      return droppable<E>().call(events.throttleTime(Duration(seconds: 2)), mapper);
     };
   }
+  EventTransformer<E> debounceDroppable<E>() {
+    return (events, mapper) {
+      return droppable<E>().call(events.debounceTime(Duration(seconds: 2)), mapper);
+    };
+  }
+
 
   _start(SearchStarted event,Emitter<SearchState> emit ) async {
     switch(event.status){
