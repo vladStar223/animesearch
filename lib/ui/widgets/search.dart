@@ -40,9 +40,7 @@ class _SearchState extends State<Search> {
             hintText: status,
             controller: _textEditingController,
             onChanged: (String value) {
-              if(value.length>3){
-                block.add(SearchStarted(state.status,value));
-              }
+              block.add(SearchStarted(state.status,value));
               BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text));
             },
             onTap: () {
@@ -67,9 +65,7 @@ class _SearchState extends State<Search> {
             hintText: status,
             controller: _textEditingController,
             onChanged: (String value) {
-              if(value.length>3){
-                block.add(SearchStarted(state.status,value));
-              }
+              block.add(SearchStarted(state.status,value));
               BlocProvider.of<SwichBloc>(context).add(SwichTextInput(_textEditingController.text));
             },
             onTap: () {

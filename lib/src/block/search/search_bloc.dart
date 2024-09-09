@@ -81,10 +81,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       print(e.toString());
       emit(SearchStartedEmpty());
     }
+    on RangeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
     catch(e){
+      emit(SearchStartedFailure(e));
       print(e.runtimeType);
     }
-
   }
   _getAnime(SearchAnimeButtonGet event,Emitter<SearchState> emit ) async {
 
@@ -106,7 +110,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       print(e.toString());
       emit(SearchStartedEmpty());
     }
+    on RangeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
     catch(e){
+      emit(SearchStartedFailure(e));
       print(e.runtimeType);
     }
 
@@ -130,7 +139,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       print(e.toString());
       emit(SearchStartedEmpty());
     }
+    on RangeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
     catch(e){
+      emit(SearchStartedFailure(e));
       print(e.runtimeType);
     }
 
