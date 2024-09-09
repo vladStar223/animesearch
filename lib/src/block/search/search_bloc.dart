@@ -39,22 +39,20 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
 
-  _start(SearchStarted event,Emitter<SearchState> emit ) async {
+  _start(SearchStarted event,Emitter<SearchState> emit ) {
+    emit(SearchStartedInProgress(event.status));
     switch(event.status){
       case SwichStatus.initial:
         print('sfs');
       case SwichStatus.user:
-        emit(SearchStartedInProgress());
         add(SearchUserButtonGet(event.text));
         print('user_search');
         // TODO: Handle this case.
       case SwichStatus.anime:
         // TODO: Handle this case.
-        emit(SearchStartedInProgress());
         add(SearchAnimeButtonGet(event.text));
         print('anime_search');
       case SwichStatus.manga:
-        emit(SearchStartedInProgress());
         add(SearchMangaButtonGet(event.text));
         print('manga_search');
         // TODO: Handle this case.
