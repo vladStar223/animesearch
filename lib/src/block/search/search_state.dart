@@ -11,6 +11,8 @@ final class SearchInitial extends SearchState {
 
 }
 final class SearchStartedInProgress extends SearchState {
+  SwichStatus swichStatus;
+  SearchStartedInProgress(this.swichStatus);
   @override
   // TODO: implement props
   List<Object?> get props => [];

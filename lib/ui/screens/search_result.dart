@@ -20,8 +20,9 @@ class SearchResult extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
         switch(state){
+
           case SearchInitial():
-            // TODO: Handle this case.
+            return Expanded(child: DefaultResult());
           case SearchStartedInProgress():
             return Expanded(child: ProgressBar());
           case SearchStartedSuccess():
@@ -43,7 +44,7 @@ class SearchResult extends StatelessWidget {
             // TODO: Handle this case.
           case SearchStartedEmpty():
             return Expanded(child: EmptyResult());
-            default:return const Expanded(child: DefaultResult());
+
         }
 
       },

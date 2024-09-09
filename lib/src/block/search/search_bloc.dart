@@ -23,32 +23,36 @@ part 'search_state.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
     on<SearchStarted>(_start,transformer:restartable());//https://henryadu.hashnode.dev/how-to-use-event-transformers-with-bloc
-    on<SearchUserButtonGet>(_getUsers);
-    on<SearchAnimeButtonGet>(_getAnime);
-    on<SearchMangaButtonGet>(_getManga);
+    on<SearchUserButtonGet>(_getUsers,transformer:debounceDroppable());
+    on<SearchAnimeButtonGet>(_getAnime,transformer:debounceDroppable());
+    on<SearchMangaButtonGet>(_getManga,transformer:debounceDroppable());
   }
   EventTransformer<E> throttleDroppable<E>() {
     return (events, mapper) {
-      return droppable<E>().call(events.throttleTime(Duration(seconds: 3)), mapper);
+      return droppable<E>().call(events.throttleTime(Duration(seconds: 2)), mapper);
+    };
+  }
+  EventTransformer<E> debounceDroppable<E>() {
+    return (events, mapper) {
+      return droppable<E>().call(events.debounceTime(Duration(seconds: 2)), mapper);
     };
   }
 
-  _start(SearchStarted event,Emitter<SearchState> emit ) async {
+
+  _start(SearchStarted event,Emitter<SearchState> emit ) {
+    emit(SearchStartedInProgress(event.status));
     switch(event.status){
       case SwichStatus.initial:
         print('sfs');
       case SwichStatus.user:
-        emit(SearchStartedInProgress());
         add(SearchUserButtonGet(event.text));
         print('user_search');
         // TODO: Handle this case.
       case SwichStatus.anime:
         // TODO: Handle this case.
-        emit(SearchStartedInProgress());
         add(SearchAnimeButtonGet(event.text));
         print('anime_search');
       case SwichStatus.manga:
-        emit(SearchStartedInProgress());
         add(SearchMangaButtonGet(event.text));
         print('manga_search');
         // TODO: Handle this case.
@@ -75,10 +79,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       print(e.toString());
       emit(SearchStartedEmpty());
     }
+    on RangeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
     catch(e){
+      emit(SearchStartedFailure(e));
       print(e.runtimeType);
     }
-
   }
   _getAnime(SearchAnimeButtonGet event,Emitter<SearchState> emit ) async {
 
@@ -100,7 +108,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       print(e.toString());
       emit(SearchStartedEmpty());
     }
+    on RangeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
     catch(e){
+      emit(SearchStartedFailure(e));
       print(e.runtimeType);
     }
 
@@ -124,7 +137,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       print(e.toString());
       emit(SearchStartedEmpty());
     }
+    on RangeError catch(e){
+      print(e.toString());
+      emit(SearchStartedEmpty());
+    }
     catch(e){
+      emit(SearchStartedFailure(e));
       print(e.runtimeType);
     }
 
