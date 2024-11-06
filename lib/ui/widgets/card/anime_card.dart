@@ -45,10 +45,6 @@ class AnimeCard extends StatelessWidget{
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                 ),
-                TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return AnimeAbout();  }));
-                }, child: Text('Testing')),
               ],
             ))
       ],
